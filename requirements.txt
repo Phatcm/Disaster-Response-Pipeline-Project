@@ -1,0 +1,5 @@
+sqlalchemy
+nltk
+scikit-learn
+pandas
+tqdm
