@@ -3,6 +3,12 @@ import plotly
 import pandas as pd
 import plotly.graph_objs as go
 
+import nltk
+nltk.download('punkt_tab')
+nltk.download('punkt')
+nltk.download('wordnet')  # For WordNetLemmatizer
+nltk.download('omw-1.4')  # Optional, for lemmatizer to work fully
+
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
