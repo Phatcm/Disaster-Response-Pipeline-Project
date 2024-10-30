@@ -25,7 +25,7 @@ from sklearn.base import clone
 
 def load_data(database_filepath):
     engine = create_engine(f'sqlite:///{database_filepath}')
-    df = pd.read_sql_table('DisasterResponse', engine)
+    df = pd.read_sql_table('Disaster_Response', engine)
 
     X = df['message']
     Y = df.iloc[:, 4:]
@@ -80,7 +80,7 @@ def build_model(classifier=RandomForestClassifier()):
         "multi_output_classifier__estimator__min_samples_split": [2, 3]
     }
 
-    model = GridSearchCV(pipeline, param_grid=parameters, verbose=3)  # Set verbosity for progress feedback
+    model = GridSearchCV(pipeline, param_grid=parameters, verbose=3, n_jobs=1)  # Set verbosity for progress feedback
     return model
 
 def train_model_with_progress(model, X_train, Y_train):
@@ -151,7 +151,7 @@ def main():
             print(f"Loading data from: {database_filepath}")
         else:
             # Prompt user for database file and model file paths
-            database_filepath = input("Enter the path to the SQLite database (e.g., data/DisasterResponse.db): ")
+            database_filepath = input("Enter the path to the SQLite database (e.g., data/Disaster_Response.db): ")
             model_filepath = input("Enter the filename to save the trained model (e.g., model/classifier.pkl): ")
 
         X, Y, category_names = load_data(database_filepath)

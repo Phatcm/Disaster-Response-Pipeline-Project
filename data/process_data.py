@@ -70,7 +70,7 @@ def save_to_database(df, db_filename):
         None
     """
     engine = create_engine(f'sqlite:///{db_filename}')
-    df.to_sql('DisasterResponse', engine, index=False, if_exists='replace')
+    df.to_sql('Disaster_Response', engine, index=False, if_exists='replace')
 
 
 def main():
@@ -80,7 +80,7 @@ def main():
         else:
             messages_file = input("Enter the path to the messages file (e.g., data/disaster_messages.csv): ")
             categories_file = input("Enter the path to the categories file (e.g., data/disaster_categories.csv): ")
-            db_file = input("Enter the database filename to save cleaned data (e.g., data/DisasterResponse.db): ")
+            db_file = input("Enter the database filename to save cleaned data (e.g., data/Disaster_Response.db): ")
         
         print(f'Loading data from:\n  Messages: {messages_file}\n  Categories: {categories_file}')
         df = load_datasets(messages_file, categories_file)
@@ -94,7 +94,7 @@ def main():
 
     except Exception as error:
         print(f"Error accessing files or processing data: {error}")
-        print('Usage example: python process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db')
+        print('Usage example: python process_data.py disaster_messages.csv disaster_categories.csv Disaster_Response.db')
 
 
 if __name__ == '__main__':
